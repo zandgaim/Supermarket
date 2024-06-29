@@ -18,18 +18,22 @@ defmodule CashierTest do
   # end
 
   test "-Scan1-" do
-    assert Cashier.scan(["GR1", "SR1", "GR1", "GR1", "CF1"]) == 22.45
+    assert Cashier.do_scan(["GR1", "SR1", "GR1", "GR1", "CF1"]) == 22.45
   end
 
   test "-Scan2-" do
-    assert Cashier.scan(["GR1", "GR1"]) == 3.11
+    assert Cashier.do_scan(["GR1", "GR1"]) == 3.11
   end
 
   test "-Scan3-" do
-    assert Cashier.scan(["SR1", "SR1", "GR1", "SR1"]) == 16.61
+    assert Cashier.do_scan(["SR1", "SR1", "GR1", "SR1"]) == 16.61
   end
 
   test "-Scan4-" do
-    assert Cashier.scan(["GR1", "CF1", "SR1", "CF1", "CF1"]) == 30.57
+    assert Cashier.do_scan(["GR1", "CF1", "SR1", "CF1", "CF1"]) == 30.57
+  end
+
+  test "-Bad customer scan-" do
+    assert Cashier.do_scan(["GR1", "CF1", "SR1", "CF1", "CF1"], false) == 41.80
   end
 end

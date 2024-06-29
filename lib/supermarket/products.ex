@@ -5,5 +5,8 @@ defmodule Supermarket.Products do
     "CF1" => %{id: 3, name: "Coffee", price: 11.23}
   }
 
-  def get_product(code), do: Map.get(@products, code)
+  @spec get_product(String.t()) :: %{id: integer(), name: String.t(), price: float()} | nil
+  def get_product(code) do
+    Map.get(@products, code)
+  end
 end
